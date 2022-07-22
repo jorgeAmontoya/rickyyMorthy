@@ -1,5 +1,4 @@
 "use strict";
-debugger;
 // Config
 import { Config } from "../config.mjs";
 
@@ -11,8 +10,7 @@ import { RickAndMortyService } from "../model/services/rick-and-morty.service.mj
 
 
 
-class CharacterController {
-debugger;
+export class CharacterController {
     #privateRickAndMortyURL;
     #privateView;
 
@@ -24,6 +22,7 @@ debugger;
     }
 
     async init() {
+        
         const servicio = new RickAndMortyService(this.#privateRickAndMortyURL);
         const characters = await servicio.getCharacters();
         console.log(characters);

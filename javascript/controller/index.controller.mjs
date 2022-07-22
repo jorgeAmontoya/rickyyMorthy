@@ -1,5 +1,4 @@
 "use strict";
-debugger;
 // Config
 import { Config } from "../config.mjs";
 
@@ -13,7 +12,6 @@ import { UserModel } from "../model/user.model.mjs";
 import { RickAndMortyService } from "../model/services/rick-and-morty.service.mjs";
 
 class IndexController {
-debugger;
     #privateUser;
     #privateRickAndMortyURL;
     #privateView;

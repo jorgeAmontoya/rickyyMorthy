@@ -1,19 +1,13 @@
 "use strict";
-debugger;
 // Config
 import { Config } from "../config.mjs";
 
-// Views
-import { CharacterView  } from "../view/character.view.mjs";
-
 // Services
 import { RickAndMortyService } from "../model/services/rick-and-morty.service.mjs";
+// Views
 import { CharacterViewdescription } from "../view/character.view.description.mjs";
 
-
-
 export class CharacterControllerDescription {
-debugger;
     #privateRickAndMortyURL;
     #privateViewdescription;
 
@@ -21,36 +15,20 @@ debugger;
         this.#privateRickAndMortyURL = Config.RickAndMortyAPI_URL;
         
         this.#privateViewdescription = new CharacterViewdescription();
-        
+ 
     }
 
     async init() {
-        const servicio = new RickAndMortyService(this.#privateRickAndMortyURL);
-        const characters = await servicio.getCharacters();
-       // console.log(characters);
-        //this.#privateViewdescription.init(characters);
+        //local search toma los parametros de la Url como si fuera una peticion Get
+        var ga = location.search;
+        var id = ga.replace('?','');
+        var url = this.#privateRickAndMortyURL+"/character/"+id;
+        const servicio = new RickAndMortyService(url);
+        const characters = await servicio.getCharactersId();
+
+        this.#privateViewdescription.init(characters[0]);
 
     }  
-
-    async description (characters){
-        debugger;
-        /*
-        const servicio = new RickAndMortyService(this.#privateRickAndMortyURL);
-        const characters = await servicio.getCharacters();
-       */
-        console.log(characters.toString());
-
-        
-        this.#privateViewdescription.init(characters);
-        
-        //console.log(this.description[0]);
-
-       // this.#privateViewdescription.init();
-       // this.#characterView= new CharacterView.description();
-        //this.#privateView.init(characters);
-    }
 }
-
-
 export const instance = new CharacterControllerDescription();
 instance.init();

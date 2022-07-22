@@ -1,38 +1,37 @@
 'use strict';
 
-import { CharacterControllerDescription} from "../controller/character.controler.description.mjs"
+import { CharacterController} from "../controller/character.controler.mjs"
 
 export class CharacterView {
-debugger;
+
     #privateBody;
 
     constructor() {
         document.title = "Personajes rick y morty";
         this.#privateBody = document.querySelector('body');
     }
-debugger;
+
+
+ 
+/**
+ * 
+ * @param {} characters 
+ */
     init(characters) {
-        const description = new CharacterControllerDescription();
-        debugger;
-        let button;
+        const description = new CharacterController();
+        
         characters.forEach((character)=>{
             const card = this.#privateCreateCard();
 
             card.id = character.Id;
-            debugger;
-            //card.addEventListener("click", function(){
-                 
-               const button = this.#privateCreateButton();
+            
+            card.addEventListener("click", () => location.href = "index.characters.html?"+character.Id);
 
-            debugger;
-             button.href = `index.characters.html`;
-
-            //}); //description.description(character)})};
             const title = this.#privateCreateTitle();
             title.textContent = character.Name;
             const image = this.#privateCreateImage();
             image.src = character.Image;
-            card.append(title,image,button);
+            card.append(title,image);
             this.#privateBody.append(card);
             return card;
         });
@@ -52,10 +51,5 @@ debugger;
     
     #privateCreateTitle() {
         return document.createElement('h1');
-    }
-
-    #privateCreateButton() {
-        return document.createElement('button');
-    }
-
+    }   
 }

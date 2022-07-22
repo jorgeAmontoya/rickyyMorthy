@@ -1,7 +1,6 @@
 'use strict';
 
 export class UserModel {
-debugger;
     #privateName;
     #privateLastname;
 

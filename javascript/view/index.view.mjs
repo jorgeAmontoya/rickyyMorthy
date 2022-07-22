@@ -1,7 +1,7 @@
 'use strict';
 
 export class IndexView {
-debugger;
+
     #privateBody;
 
     constructor() {
